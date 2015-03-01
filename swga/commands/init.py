@@ -99,10 +99,13 @@ def main(fg_genome_fp, bg_genome_fp, exclude_fp):
         click.confirm("Existing file `%s` will be overwritten. Continue?" 
                       % default_parameters_name, abort=True)
 
-    min_fg_bind = 100
-    min_fg_rate = min_fg_bind/float(fg_length)
-    max_bg_bind = 10000
-    max_bg_rate = max_bg_bind/float(bg_length)
+    # Calculate default binding frequencies for foreground and background
+    # Fg is based on a binding rate of 1/100000 bp/binding site
+    # Fg is based on a binding rate of 1/150000 bp/binding site
+    min_fg_rate = 0.00001
+    min_fg_bind = int(min_fg_rate*float(fg_length))
+    max_bg_rate = 0.0000067
+    max_bg_bind = int(max_bg_rate*float(bg_length))
     with open(os.path.join(cwd, default_parameters_name), "wb") as cfg_file:
         cfg_file.write(default_parameters.format(**locals()))
     

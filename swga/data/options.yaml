@@ -116,14 +116,14 @@ filter:
     default: *fglen
     desc: length of the foreground genome (autofilled by swga init)
     type: int
-  fg_min_avg_rate:
-    default: *fgrate
-    desc: minimum average binding frequency over the foreground genome
-    type: float
-  bg_max_avg_rate:
-    default: *bgrate
-    desc: maximum average binding frequency over the background genome
-    type: float
+  min_fg_bind:
+    default: *fgbind
+    desc: minimum primer binding sites (default autofilled based on genome length)
+    type: int
+  max_bg_bind:
+    default: *bgbind
+    desc: maximum primer binding sites (default autofilled based on genome length)
+    type: int
   min_tm:
     default: 0
     desc: minimum primer melting temperature (C)
